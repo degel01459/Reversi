@@ -1,0 +1,2 @@
+# Reversi
+ Proyecto Algoritmo I
