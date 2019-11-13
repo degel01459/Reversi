@@ -1,6 +1,3 @@
-# Reversi
- Proyecto Algoritmo I
-
 git clone url
 copia lo que hay en el enlace a la computadora
 
