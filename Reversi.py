@@ -38,3 +38,5 @@ incio(reversi)
 print("los nombres dados son: ",jugador1.nombre, jugador2.nombre)
 print(jugador1.ficha, jugador2.ficha)
 imprimir(reversi)
+
+""" MARICO EL QUE LO LEA"""
