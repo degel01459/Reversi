@@ -5,7 +5,7 @@ git add +nombre archivo
 Para crear una estacion de trabajo antes de montarlo.
 git add .
 
-git status (vemos todos los archivos que se van a subir en el repositorio
+git statuas (vemos todos los archivos que se van a subir en el repositorio
 -en verde-)
 
 git commit -m "" (agregamos un comentario de las modificaciones)
