@@ -39,8 +39,6 @@ jugador1 = jugador()	#invoca la clase
 jugador2 = jugador()	#invoca la clase
 jugador1.j = 1			#El valor del jugador1
 jugador2.j = 2			#El valor del jugador2
-jugador1.ficha=1
-jugador2.ficha=2		
 
 
 ## PRE-PROGRAMA ##
@@ -53,15 +51,11 @@ reversi=[[0 for j in range(0,8)]for i in range(0,8)]
 
 
 ## ESTRUCTURA ACTUAL ##
-
-inicio(reversi)
-imprimir(reversi,fichas)
-
-while QuieresJugar() == 1:
-	otra = 1					#Otra partida
-	while otra == 1 :
-		Nombres(jugador,jugador1,jugador2,partida)
-		while QuedanFichas(fichas):
+# Programa principal
+def partida():
+	inicio(reversi)
+	imprimir(reversi,fichas)
+	while QuedanFichas(fichas):
 			jugador = Turno(turno, jugador, jugador1, jugador2)
 
 
@@ -69,4 +63,24 @@ while QuieresJugar() == 1:
 print("los nombres dados son: ",jugador1.nombre, jugador2.nombre)
 print(jugador1.ficha, jugador2.ficha)
 imprimir(reversi,fichas)
+
+# Otra partida
+Nueva_partida=True
+while Nueva_partida:
+	while True:
+		try:
+			print("¿Jugar nuevamente?")
+			print("Indique (SI) o (NO) en mayúscula")
+			New_game=input("ingrese: ")
+			assert(New_game=="SI" or New_game=="NO")
+			break
+		except:
+			print("El dato ingresado no es válido")
+			print("Debe ingresar (SI) o (NO) en mayúscula")
+			print("")
+	if New_game=="NO":
+		Nueva_partida=False
+	else New_game=="SI"
+		Partida()				
+
 
