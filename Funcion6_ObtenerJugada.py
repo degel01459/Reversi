@@ -1,12 +1,13 @@
-def  ObtenerJugada(x,y):		#Funcion pregunta al usuario las coordenadas de la jugada.
+def  ObtenerJugada(cord1,cord2):		#Funcion pregunta al usuario las coordenadas de la jugada.
 	while True:
 		try:
-			x = int(input("Ingrese Fila: "))
-			y = int(input("Ingrese Columna: "))
-			assert(0 <= x < 8 and 0 <= y < 8 )
+			cord1 = int(input("Ingrese Fila: "))
+			cord2 = int(input("Ingrese Columna: "))
+			assert(0 <= cord1 < 8 and 0 <= cord2 < 8 )
+			break
 		except:
 			print("Jugada Invalida: Fuera de limites")
 			print("Intente Nuevamente")
-			x = int(input("Ingrese Fila: "))
-			y = int(input("Ingrese Columna: "))
-		return x,y
+			print("")
+	return cord1,cord2			
+	

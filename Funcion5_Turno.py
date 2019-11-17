@@ -1,10 +1,10 @@
-def Turno(turno, jugador, jugador1, jugador2):		#Funcion que intercambia los jugadores dependiendo el turno.
-	assert( turno>=1 )								#Toma en cuenta que la var turno inicializa en 1.
-	if turno%2!=0:									#Turnos impares
-		jugador = jugador1
-	elif turno%2==0:								#Turnos pares
-		jugador = jugador2
-	print("Es el Turno: ",turno)
+def Turno(esTurno,player1, player2):		#Funcion que intercambia los jugadores dependiendo el turno.
+	assert( esTurno>=1 )								#Toma en cuenta que la var turno inicializa en 1.
+	if esTurno%2!=0:									#Turnos impares
+		jugador = player1
+	elif esTurno%2==0:								#Turnos pares
+		jugador = player2
+	print("Es el Turno: ",esTurno)
 	print("Turno del jugador ",jugador.nombre)
-	assert( jugador == jugador1 or jugador == jugador2 )
+	assert( jugador == player1 or jugador == player2 )
 	return jugador

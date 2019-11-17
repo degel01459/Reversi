@@ -1,5 +1,5 @@
-def CambiarJugador(jugador,jugador1,jugador2):	#Funcion que realiza el cambio de jugador
-	if jugador.j==1:
-		return jugador2
+def CambiarJugador(esTurno,player1,player2):	#Funcion que realiza el cambio de jugador
+	if esTurno%2==0:
+		return player1
 	else:
-		return jugador1
+		return player2

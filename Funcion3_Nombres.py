@@ -1,4 +1,13 @@
-def Nombres(jugador,jugador1,jugador2,partida):					#Procedimiento que asigna los nombres de los jugadores
-	print("Es la Partida: ",partida)							#Indica el número de partidas que se llevan jugando
-	jugador1.nombre = input("Por favor ingrese nombre del jugador 1: ")
-	jugador2.nombre = input("Por favor ingrese nombre del jugador 2: ")
+def Nombres(player1,player2,match):					#Procedimiento que asigna los nombres de los jugadores
+	print("Es la Partida: ",match)	
+	while True:						#Indica el número de partidas que se llevan jugando
+		try:
+			player1.nombre = input("Por favor ingrese nombre del jugador 1: ")
+			player2.nombre = input("Por favor ingrese nombre del jugador 2: ")
+			assert(len(player1.nombre)>0 and len(player2.nombre)>0)
+			break
+		except:
+			print("no puede queda en blanco")
+			print("Debe intoducir al menos un caracter")
+			print("")
+	

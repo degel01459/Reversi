@@ -1,9 +1,7 @@
-def  Resultado(tablero,jugador,jugador1,jugador2):	#Procedimiento indica resultados actuales y lo refleja en el tablero.
+def  Resultado(player1,player2):	#Procedimiento indica resultados actuales y lo refleja en el tablero.
 	print("")
-	print("Total de fichas Negras de ",jugador1.nombre,": ",jugador1.fichas)
-	print("Total de fichas Negras de ",jugador2.nombre,": ",jugador2.fichas)
+	print("Total de fichas Negras de ",player1.nombre,": ",player1.casilla)
+	print("Total de fichas Negras de ",player2.nombre,": ",player2.casilla)
 	print("")
-	for i in tablero:
-		print(i)
-	print("")
+	
 
