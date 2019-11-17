@@ -1,15 +1,14 @@
-def  QuieresJugar() -> int: 					# Función que preguntar al usuario si quiere comenzar el juego
+def  QuieresJugar() -> str: 					# Función que preguntar al usuario si quiere comenzar el juego
 	while True:
 		try: # try/except
-			print("Quieres comenzar el juego elige:")
-			print("1 = Comenzar")
-			print("0 = Exit")
-			Jugar = int(input("Coloca una opcion:"))
-			assert( Jugar == 1 or Jugar == 0 )
+			print("")
+			print("Quieres comenzar el juego :")
+			print("Indique (SI) o (NO) en mayúscula")
+			Jugar = str(input("Coloca una opcion:"))
+			assert( Jugar == "SI" or Jugar == "NO" )
 			break
 		except:
-			print("Opcion invalida intente nuevamente.")
-			print("Quieres comenzar el juego elige:")
-					
-	assert( Jugar == 1 or Jugar == 0)
+			print("El dato ingresado no es válido")
+			print("Debe ingresar (SI) o (NO) en mayúscula")
+			print("")
 	return Jugar
