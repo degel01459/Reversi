@@ -48,7 +48,7 @@ def Partida():
 	ficha=60
 	print("jugador1 es: ",jugador1.nombre,"jugador2 es: ", jugador2.nombre)
 	inicio(reversi)	
-	imprimir(reversi,ficha)
+	imprimir(reversi)
 	while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
 		jugador=Turno(turno,jugador1,jugador2)
 		x,y=ObtenerJugada(x,y)
@@ -57,12 +57,12 @@ def Partida():
 			RealizarJugada(reversi,x,y,jugador)
 			ficha=ficha-1
 			LlenaCasilla(turno,jugador1,jugador2)
-			imprimir(reversi,ficha)
+			imprimir(reversi)
 			turno=turno+1
 			CambiarJugador(turno,jugador1,jugador2)
 		else:
 			print("error, la posicion no es válida")
-	imprimir(reversi,ficha)		
+	imprimir(reversi)		
 	Resultado(jugador1,jugador2)			
 Partida()
 Nueva_partida=True
