@@ -55,7 +55,7 @@ def Partida():
 		
 		x,y=ObtenerJugada(x,y)
 		
-		if JugadaValida(reversi,x,y,jugador,jugador1,jugador2):
+		if JugadaValida(reversi,x,y,jugador):
 			RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
 			ficha=ficha-1
 			LlenaCasilla(turno,jugador1,jugador2)
