@@ -38,6 +38,7 @@ partida=1
 Nombres(jugador1,jugador2,partida)
 jugador1.j=1
 jugador2.j=2
+
 def Partida():	
 	jugador1.casilla=2
 	jugador2.casilla=2
@@ -51,10 +52,11 @@ def Partida():
 	imprimir(reversi)
 	while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
 		jugador=Turno(turno,jugador1,jugador2)
+		
 		x,y=ObtenerJugada(x,y)
 		
-		if JugadaValida(reversi,x,y,jugador):
-			RealizarJugada(reversi,x,y,jugador)
+		if JugadaValida(reversi,x,y,jugador,jugador1,jugador2):
+			RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
 			ficha=ficha-1
 			LlenaCasilla(turno,jugador1,jugador2)
 			imprimir(reversi)
