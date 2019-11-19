@@ -5,6 +5,6 @@ def Turno(esTurno,player1, player2):		#Funcion que intercambia los jugadores dep
 	elif esTurno%2==0:								#Turnos pares
 		jugador = player2
 	print("Es el Turno: ",esTurno)
-	print("Turno del jugador ",jugador.nombre)
+	print("Turno del jugador ",jugador.nombre,"Ficha=",jugador.j)
 	assert( jugador == player1 or jugador == player2 )
 	return jugador

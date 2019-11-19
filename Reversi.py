@@ -42,9 +42,6 @@ jugador2.j=2
 
 
 def Partida():
-	print("")
-	print("	REVERSI ")
-	print("")
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
@@ -52,7 +49,7 @@ def Partida():
 	turno=1
 	reversi=[[0 for j in range(0,8)]for i in range(0,8)]
 	ficha=60
-	print("jugador1 es: ",jugador1.nombre,"jugador2 es: ", jugador2.nombre)
+	print(" 1 =",jugador1.nombre,"2 =", jugador2.nombre)
 	inicio(reversi)	
 	imprimir(reversi)
 	while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
