@@ -15,8 +15,8 @@ def LlenaCasilla(A,player,player1,player2):
 				j=j+1
 			i=i+1
 			j=0
-		contador=0
 		x=x+1
+		contador=0
 	print(z)	
 
 	return z

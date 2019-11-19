@@ -3,8 +3,11 @@ def jugadaizq(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j:
-		jugadaizq(board,f,c-1,jug,)
-		if 0<=f<7 and 0<=c<7 and board[f][c-1]==jug.j:
+		print("izq",f,c)
+		jugadaizq(board,f,c-1,jug)
+		if 0<=f<8 and 0<c<8 and board[f][c-1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -15,8 +18,11 @@ def jugadadiagizqsup(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("diagizqsup",f,c)
 		jugadadiagizqsup(board,f-1,c-1,jug)
-		if 0<=f<7 and 0<=c<7 and board[f-1][c-1]==jug.j:
+		if 0<f<8 and 0<c<8 and board[f-1][c-1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -27,8 +33,11 @@ def jugadasup(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("sup",f,c)
 		jugadasup(board,f-1,c,jug)
-		if 0<=f<7 and 0<=c<7 and board[f-1][c]==jug.j:
+		if 0<f<8 and 0<=c<8 and board[f-1][c]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -39,8 +48,11 @@ def jugadadiagdersup(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("diagdersup",f,c)
 		jugadadiagdersup(board,f-1,c+1,jug)
-		if 0<=f<7 and 0<=c<7 and board[f-1][c+1]==jug.j:
+		if 0<f<8 and 0<=c<7 and board[f-1][c+1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -51,8 +63,11 @@ def jugadader(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("der",f,c)
 		jugadader(board,f,c+1,jug)
-		if 0<=f<7 and 0<=c<7 and board[f][c+1]==jug.j:
+		if 0<=f<8 and 0<=c<7 and board[f][c+1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -63,8 +78,11 @@ def jugadadiagderinf(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("diagderinf",f,c)
 		jugadadiagderinf(board,f+1,c+1,jug)
 		if 0<=f<7 and 0<=c<7 and board[f+1][c+1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -75,8 +93,11 @@ def jugadainf(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("inf",f,c)
 		jugadainf(board,f+1,c,jug)
-		if 0<=f<7 and 0<=c<7 and board[f+1][c]==jug.j:
+		if 0<=f<7 and 0<=c<8 and board[f+1][c]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass
@@ -87,8 +108,11 @@ def jugadadiagizqinf(board,f,c,jug):
 	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
+		print("diagizqinf",f,c)
 		jugadadiagizqinf(board,f+1,c-1,jug)
-		if 0<=f<7 and 0<=c<7 and board[f+1][c-1]==jug.j:
+		if 0<=f<7 and 0<c<8 and board[f+1][c-1]==jug.j:
+			EsValida=True
+		elif 0<=f<8 and 0<c<8 and board[f][c]!=jug.j and board[f][c]!=0:
 			EsValida=True
 		else:
 			pass

@@ -39,7 +39,12 @@ Nombres(jugador1,jugador2,partida)
 jugador1.j=1
 jugador2.j=2
 
-def Partida():	
+
+
+def Partida():
+	print("")
+	print("	REVERSI ")
+	print("")
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
@@ -58,12 +63,13 @@ def Partida():
 		if JugadaValida(reversi,x,y,jugador):
 			RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
 			ficha=ficha-1
-			LlenaCasilla(reversi,jugador,jugador1,jugador2)
+			
 			imprimir(reversi)
 			turno=turno+1
 			CambiarJugador(turno,jugador1,jugador2)
 		else:
 			print("error, la posicion no es válida")
+	LlenaCasilla(reversi,jugador,jugador1,jugador2)
 	imprimir(reversi)		
 	Resultado(jugador1,jugador2)
 
