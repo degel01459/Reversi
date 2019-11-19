@@ -1,9 +1,23 @@
 
-def LlenaCasilla(esTurno,player1,player2):
-	if esTurno%2==0:
-		player2.casilla=player2.casilla+1
-		player1.casilla=player1.casilla-1
-	elif esTurno%2!=0:
-		player1.casilla=player1.casilla-1
-		player2.casilla=player2.casilla+1
-		
+def LlenaCasilla(A,player,player1,player2):
+	x=1
+	y=2
+	i=0
+	j=0
+	contador=0
+	z=[ 0 for k in range(1,3)]
+	while x<=y:
+		while i<8:
+			while j<8:
+				if x==A[i][j]:
+					z[x]=contador+1
+
+				j=j+1
+			i=i+1
+			j=0
+		contador=0
+		x=x+1
+	print(z)	
+
+	return z
+	

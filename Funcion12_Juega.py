@@ -3,7 +3,7 @@ def jugadaizq(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadaizq(tablero,cord1,cord2-1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1][cord2-1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1][cord2-1]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -14,7 +14,7 @@ def jugadadiagizqsup(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadadiagizqsup(tablero,cord1-1,cord2-1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1-1][cord2-1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1-1][cord2-1]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -25,7 +25,7 @@ def jugadasup(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadasup(tablero,cord1-1,cord2,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1-1][cord2]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1-1][cord2]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -36,7 +36,7 @@ def jugadadiagdersup(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadadiagdersup(tablero,cord1-1,cord2+1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1-1][cord2+1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1-1][cord2+1]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -47,7 +47,7 @@ def jugadader(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadader(tablero,cord1,cord2+1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1][cord2+1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1][cord2+1]==player.j:
 			print(cord2)
 			tablero[cord1][cord2]=player.j
 		else:
@@ -59,7 +59,7 @@ def jugadadiagderinf(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadadiagderinf(tablero,cord1+1,cord2+1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1+1][cord2+1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1+1][cord2+1]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -70,7 +70,7 @@ def jugadainf(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadainf(tablero,cord1+1,cord2,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1+1][cord2]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1+1][cord2]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass
@@ -81,7 +81,7 @@ def jugadadiagizqinf(tablero,cord1,cord2,player,player1,player2,i,j):
 		pass
 	elif tablero[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8:
 		jugadadiagizqinf(tablero,cord1+1,cord2-1,player,player1,player2,i,j)
-		if 0<cord1<7 and 0<cord2<7 and tablero[cord1+1][cord2-1]==player.j:
+		if 0<=cord1<7 and 0<=cord2<7 and tablero[cord1+1][cord2-1]==player.j:
 			tablero[cord1][cord2]=player.j
 		else:
 			pass

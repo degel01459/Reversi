@@ -1,10 +1,10 @@
 def jugadaizq(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j:
 		jugadaizq(board,f,c-1,jug,)
-		if 0<f<7 and 0<c<7 and board[f][c-1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f][c-1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -12,11 +12,11 @@ def jugadaizq(board,f,c,jug):
 
 def jugadadiagizqsup(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadadiagizqsup(board,f-1,c-1,jug)
-		if 0<f<7 and 0<c<7 and board[f-1][c-1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f-1][c-1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -24,11 +24,11 @@ def jugadadiagizqsup(board,f,c,jug):
 
 def jugadasup(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadasup(board,f-1,c,jug)
-		if 0<f<7 and 0<c<7 and board[f-1][c]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f-1][c]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -36,11 +36,11 @@ def jugadasup(board,f,c,jug):
 
 def jugadadiagdersup(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadadiagdersup(board,f-1,c+1,jug)
-		if 0<f<7 and 0<c<7 and board[f-1][c+1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f-1][c+1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -48,11 +48,11 @@ def jugadadiagdersup(board,f,c,jug):
 
 def jugadader(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadader(board,f,c+1,jug)
-		if 0<f<7 and 0<c<7 and board[f][c+1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f][c+1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -60,11 +60,11 @@ def jugadader(board,f,c,jug):
 
 def jugadadiagderinf(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadadiagderinf(board,f+1,c+1,jug)
-		if 0<f<7 and 0<c<7 and board[f+1][c+1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f+1][c+1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -72,11 +72,11 @@ def jugadadiagderinf(board,f,c,jug):
 
 def jugadainf(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadainf(board,f+1,c,jug)
-		if 0<f<7 and 0<c<7 and board[f+1][c]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f+1][c]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -84,11 +84,11 @@ def jugadainf(board,f,c,jug):
 
 def jugadadiagizqinf(board,f,c,jug):
 	EsValida=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j:
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
 	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8:
 		jugadadiagizqinf(board,f+1,c-1,jug)
-		if 0<f<7 and 0<c<7 and board[f+1][c-1]!=jug.j:
+		if 0<=f<7 and 0<=c<7 and board[f+1][c-1]==jug.j:
 			EsValida=True
 		else:
 			pass
@@ -97,64 +97,13 @@ def jugadadiagizqinf(board,f,c,jug):
 def JugadaValida(tablero,cord1,cord2,player):
 	valida=True
 	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or tablero[cord1][cord2]!=0:
-		EsValida=False
+		valida=False
 	elif (cord1>=0 and cord1<8 and cord2>=0 and cord2<8 and tablero[cord1][cord2]==0):	
-		if (jugadaizq(tablero,cord1,cord2,player) or jugadadiagizqsup(tablero,cord1,cord2,player)
-		or jugadasup(tablero,cord1,cord2,player) or jugadadiagdersup(tablero,cord1,cord2,player)
-		or jugadader(tablero,cord1,cord2,player) or jugadadiagderinf(tablero,cord1,cord2,player)
-		or jugadainf(tablero,cord1,cord2,player) or jugadadiagizqinf(tablero,cord1,cord2,player)):
+		if (jugadaizq(tablero,cord1,cord2-1,player) or jugadadiagizqsup(tablero,cord1-1,cord2-1,player)
+		or jugadasup(tablero,cord1-1,cord2,player) or jugadadiagdersup(tablero,cord1-1,cord2+1,player)
+		or jugadader(tablero,cord1,cord2+1,player) or jugadadiagderinf(tablero,cord1+1,cord2+1,player)
+		or jugadainf(tablero,cord1+1,cord2,player) or jugadadiagizqinf(tablero,cord1+1,cord2-1,player)):
 			pass
 		else:
 			valida=False
 	return valida				
-
-	
-"""if jugadaizq(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadadiagizqsup(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadasup(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadadiagdersup(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadader(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadadiagderinf(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadainf(tablero,cord1,cord2,player,player1,player2):
-			pass
-		elif jugadadiagizqinf(tablero,cord1,cord2,player,player1,player2):
-			pass"""		
-
-"""def JugadaValida(tablero,cord1,cord2,player,player1,player2):
-	EsValida=True
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or tablero[cord1][cord2]!=0:
-		EsValida=False
-	elif (cord1>=0 and cord1<8 and cord2>=0 and cord2<8 and tablero[cord1][cord2]==0):
-		if Vecinos(tablero,cord1-1,cord2,player):
-			pass
-		elif Vecinos(tablero,cord1+1,cord2,player):
-			pass
-		elif Vecinos(tablero,cord1,cord2+1,player):
-			pass
-		elif Vecinos(tablero,cord1,cord2-1,player):
-			pass
-		elif Vecinos(tablero,cord1-1,cord2-1,player):
-			pass
-		elif Vecinos(tablero,cord1+1,cord2-1,player):
-			pass
-		elif Vecinos(tablero,cord1-1,cord2+1,player):
-			pass
-		elif Vecinos(tablero,cord1+1,cord2+1,player):	
-			pass
-		else:
-			EsValida=False	 
-	return EsValida"""
-	
-def Vecinos(board,f,c,jug):
-	jugar=False
-	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
-		pass
-	elif f>=0 and f<8 and c>=0 and c<8 and board[f][c]!=jug.j and board[f][c]!=0:
-		jugar=True
-	return jugar	

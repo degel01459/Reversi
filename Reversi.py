@@ -58,14 +58,15 @@ def Partida():
 		if JugadaValida(reversi,x,y,jugador):
 			RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
 			ficha=ficha-1
-			LlenaCasilla(turno,jugador1,jugador2)
+			LlenaCasilla(reversi,jugador,jugador1,jugador2)
 			imprimir(reversi)
 			turno=turno+1
 			CambiarJugador(turno,jugador1,jugador2)
 		else:
 			print("error, la posicion no es válida")
 	imprimir(reversi)		
-	Resultado(jugador1,jugador2)			
+	Resultado(jugador1,jugador2)
+
 Partida()
 Nueva_partida=True
 while Nueva_partida:
