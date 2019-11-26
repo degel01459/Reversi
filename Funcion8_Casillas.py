@@ -1,23 +1,16 @@
 
-def LlenaCasilla(A,player,player1,player2):
-	x=1
-	y=2
-	i=0
-	j=0
+def LlenaCasilla(tablero,player):
+	assert(all(all(0<=tablero[i][j]<3 for j in range(0,8)) for i in range(0,8)))
 	contador=0
-	z=[ 0 for k in range(1,3)]
-	while x<=y:
-		while i<8:
-			while j<8:
-				if x==A[i][j]:
-					z[x]=contador+1
-
-				j=j+1
-			i=i+1
-			j=0
-		x=x+1
-		contador=0
-	print(z)	
-
-	return z
 	
+	for i in range(0,8):
+		for j in range(0,8):
+			if tablero[i][j]==player.j:
+
+				contador=contador+1
+			elif tablero[i][j]!=player:
+				pass	
+	assert(all(all(contador==sum(1 for k in range(0,64)) for j in range(0,8)) for i in range(0,8) if tablero[i][j]==player.j))		
+		
+
+	return contador

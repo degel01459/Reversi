@@ -60,14 +60,17 @@ def Partida():
 		if JugadaValida(reversi,x,y,jugador):
 			RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
 			ficha=ficha-1
-			
 			imprimir(reversi)
 			turno=turno+1
 			CambiarJugador(turno,jugador1,jugador2)
+			jugador1.casilla=LlenaCasilla(reversi,jugador1)
+			jugador2.casilla=LlenaCasilla(reversi,jugador2)		
+			print("")
+			print("jugador1:",jugador1.casilla,"jugador2",jugador2.casilla)		
 		else:
 			print("error, la posicion no es válida")
-	LlenaCasilla(reversi,jugador,jugador1,jugador2)
-	imprimir(reversi)		
+			print("")
+	Total(jugador1,jugador2)		
 	Resultado(jugador1,jugador2)
 
 Partida()
