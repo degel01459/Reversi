@@ -24,9 +24,9 @@ BLANCO = (255, 255, 255)
 VERDE = ( 0, 255, 0)
 ROJO = (255, 0, 0)
 AZUL = (0,0,255)
-FICHABLANCA = pygame.image.load("D:/DEGEL/OneDrive/UNI_KEVIN/Algoritmos/ALGORITMOI/LabAlgoritmo/Proyecto_SD_Algoritmo_I/Reversi/circuloblanco.png")
-FICHANEGRA = pygame.image.load("D:/DEGEL/OneDrive/UNI_KEVIN/Algoritmos/ALGORITMOI/LabAlgoritmo/Proyecto_SD_Algoritmo_I/Reversi/circulonegro.png")
-titulo = pygame.image.load("D:/DEGEL/OneDrive/UNI_KEVIN/Algoritmos/ALGORITMOI/LabAlgoritmo/Proyecto_SD_Algoritmo_I/Reversi/titulo.jpg")
+FICHABLANCA = pygame.image.load("C:/Users/ANGRODHER/Desktop/Algoritmos/Reversi/circuloblanco.png")
+FICHANEGRA = pygame.image.load("C:/Users/ANGRODHER/Desktop/Algoritmos/Reversi/circulonegro.png")
+titulo = pygame.image.load("C:/Users/ANGRODHER/Desktop/Algoritmos/Reversi/titulo.jpg")
 
 # Establecemos el LARGO y ALTO de cada celda de la retícula.
 LARGO  = 50
@@ -37,12 +37,9 @@ MARGEN = 10
 
 # Creamos un array bidimensional. Un array bidimensional
 # no es más que una lista de listas.
-grid = []
-for fila in range(8):
-	# Añadimos un array vacío que contendrá cada celda en esta fila
-	grid.append([])
-	for columna in range(8):
-		grid[fila].append(0) # Añade una celda
+reversi=[[0 for j in range(0,8)]for i in range(0,8)]
+inicio(reversi)
+imprimir(reversi)
 
 # Inicializamos pygame
 pygame.init()
@@ -73,7 +70,7 @@ while not cerrar:
             columna = pos[0] // (LARGO + MARGEN)
             fila = pos[1] // (ALTO + MARGEN)
             # Establece esa ubicación a cero
-            grid[fila][columna] = 1
+            reversi[fila][columna] = 1
             print("Click ", pos, "Coordenadas de la retícula: ", fila, columna)
     # Establecemos el fondo de pantalla.
     pantalla.fill(NEGRO)
@@ -81,7 +78,7 @@ while not cerrar:
     for fila in range(8):
         for columna in range(8):
             color = BLANCO
-            if grid[fila][columna] == 1:
+            if reversi[fila][columna] == 1:
                 color = NEGRO
             pygame.draw.rect(pantalla,color,[(MARGEN+LARGO) * columna + MARGEN,(MARGEN+ALTO) * fila + MARGEN,LARGO,ALTO])
 
