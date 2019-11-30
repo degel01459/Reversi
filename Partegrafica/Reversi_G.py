@@ -1,3 +1,4 @@
+
 # Descripción: Reversi es un cásico juego de mesa.
 # Autores: Angel Rodriguez, Kevin Briceño
 # Fecha de modificación: 29/11/2019
@@ -33,7 +34,7 @@ from Funcion13_EsValida			import JugadaValida
 
 #COLORES
 BLANCO = (255, 255, 255)
-VERDE = ( 0, 255, 0)
+VERDE = ( 80, 180, 80)
 ROJO = (255, 0, 0)
 FONDO = (80,180,80)
 NEGRO = (0, 0, 0)
@@ -44,7 +45,7 @@ ALTO = 50
 MARGEN = 10
 
 #CONFIGURACION
-DIMENCIONES = [420,420]
+DIMENCIONES = [600,600]
 # Establecemos el título de la pantalla.
 pygame.display.set_caption("OTHELLO")
 
@@ -84,38 +85,39 @@ def Partida():
 		for evento in pygame.event.get():
 			if evento.type == pygame.QUIT:
 				cerrar=True
-			while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
-				jugador=Turno(turno,jugador1,jugador2) 
-				if evento.type == pygame.MOUSEBUTTONDOWN:
+			elif evento.type == pygame.MOUSEBUTTONDOWN:
+				while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
+					jugador=Turno(turno,jugador1,jugador2) 
 					pos = pygame.mouse.get_pos()
 					y=pos[0] // (LARGO + MARGEN)
 					x=pos[1] // (ALTO + MARGEN)
 					#jugada valida y realizar
 					tablero[x][y]=jugador.j
 					print("Click ", pos, "Coordenadas de la retícula: ", x, y)
-					if JugadaValida(reversi,x,y,jugador):
-						RealizarJugada(reversi,x,y,jugador,jugador1,jugador2)
+					if JugadaValida(tablero,x,y,jugador):
+						RealizarJugada(tablero,x,y,jugador,jugador1,jugador2)
 						ficha=ficha-1
 						turno=turno+1
 						CambiarJugador(turno,jugador1,jugador2)
-						jugador1.casilla=LlenaCasilla(reversi,jugador1)
-						jugador2.casilla=LlenaCasilla(reversi,jugador2)
+						jugador1.casilla=LlenaCasilla(tablero,jugador1)
+						jugador2.casilla=LlenaCasilla(tablero,jugador2)
+					else:
+						pass
 					Total(jugador1,jugador2)		
 					Resultado(jugador1,jugador2)
 		# Establecemos el fondo de pantalla.
-		ventana.fill(NEGRO)	
+		ventana.fill(VERDE)	
 		# Dibujamos la retícula
 		for x in range(0,8):
 			for y in range(0,8):
 				color=FONDO
-				if grid[fila][columna] == 1:
+				if tablero[x][y] == 1:
 					color = NEGRO
-				if grid[fila][columna] == 2:
+				if tablero[x][y] == 2:
 					color = BLANCO
-
-			pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
+				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 		# Limitamos a 60 fotogramas por segundo.
-		reloj.tick(60)
+		clock.tick(60)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
 pygame.quit()
