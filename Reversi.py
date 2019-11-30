@@ -53,7 +53,7 @@ def Partida():
 	inicio(reversi)	
 	imprimir(reversi)
 	while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
-		jugador=Turno(turno,jugador1,jugador2)
+		jugador=Turno(turno,jugador1,jugador2) 
 		
 		x,y=ObtenerJugada(x,y)
 		

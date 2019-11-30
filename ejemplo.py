@@ -5,12 +5,8 @@ NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
 VERDE = ( 0, 255, 0)
 ROJO = (255, 0, 0)
- 
-# Establecemos el LARGO y ALTO de cada celda de la retícula.
 LARGO  = 20
 ALTO = 20
- 
-# Establecemos el margen entre las celdas.
 MARGEN = 5
  
 # Creamos un array bidimensional. Un array bidimensional
@@ -69,10 +65,7 @@ while not hecho:
                 color = VERDE
             pygame.draw.rect(pantalla,
                              color,
-                             [(MARGEN+LARGO) * columna + MARGEN,
-                              (MARGEN+ALTO) * fila + MARGEN,
-                              LARGO,
-                              ALTO])
+                             [(MARGEN+LARGO) * columna + MARGEN, (MARGEN+ALTO) * fila + MARGEN, LARGO, ALTO])
      
     # Limitamos a 60 fotogramas por segundo.
     reloj.tick(60)
