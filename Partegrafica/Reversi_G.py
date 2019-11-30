@@ -1,4 +1,3 @@
-
 # Descripción: Reversi es un cásico juego de mesa.
 # Autores: Angel Rodriguez, Kevin Briceño
 # Fecha de modificación: 29/11/2019
@@ -45,7 +44,7 @@ ALTO = 50
 MARGEN = 10
 
 #CONFIGURACION
-DIMENCIONES = [600,600]
+DIMENCIONES = [500,500]
 # Establecemos el título de la pantalla.
 pygame.display.set_caption("OTHELLO")
 
@@ -60,7 +59,7 @@ partida=1
 Nombres(jugador1,jugador2,partida)
 jugador1.j=1
 jugador2.j=2
-
+u=0
 def Partida():
 	jugador1.casilla=2
 	jugador2.casilla=2
@@ -81,30 +80,31 @@ def Partida():
 	cerrar=False
 	clock = pygame.time.Clock()
 	fuente = pygame.font.Font(None,30)
-	while not cerrar:
-		for evento in pygame.event.get():
-			if evento.type == pygame.QUIT:
-				cerrar=True
-			elif evento.type == pygame.MOUSEBUTTONDOWN:
-				while QuedanFichas(ficha) and SePuedeJugar(jugador1,jugador2):
-					jugador=Turno(turno,jugador1,jugador2) 
-					pos = pygame.mouse.get_pos()
-					y=pos[0] // (LARGO + MARGEN)
-					x=pos[1] // (ALTO + MARGEN)
-					#jugada valida y realizar
-					tablero[x][y]=jugador.j
-					print("Click ", pos, "Coordenadas de la retícula: ", x, y)
-					if JugadaValida(tablero,x,y,jugador):
-						RealizarJugada(tablero,x,y,jugador,jugador1,jugador2)
-						ficha=ficha-1
-						turno=turno+1
-						CambiarJugador(turno,jugador1,jugador2)
-						jugador1.casilla=LlenaCasilla(tablero,jugador1)
-						jugador2.casilla=LlenaCasilla(tablero,jugador2)
-					else:
-						pass
-					Total(jugador1,jugador2)		
-					Resultado(jugador1,jugador2)
+	pygame.display.set_caption('Eventos del mouse')
+	pygame.display.set_mode((500, 500))
+	while True:
+		event = pygame.event.wait()
+		if event.type == pygame.QUIT:
+			break
+		if event.type == pygame.MOUSEBUTTONDOWN:
+			if ficha > 0 and SePuedeJugar(jugador1,jugador2):
+				jugador=Turno(turno,jugador1,jugador2)
+				pos= (event.pos)
+				y=pos[0] // (LARGO + MARGEN)
+				x=pos[1] // (ALTO + MARGEN)
+				print(tablero[x][y])
+				print("Click ", pos, "Coordenadas de la retícula: ", x, y)
+				if JugadaValida(tablero,x,y,jugador):
+					RealizarJugada(tablero,x,y,jugador,jugador1,jugador2)
+					ficha=ficha-1
+					turno=turno+1
+					CambiarJugador(turno,jugador1,jugador2)
+					jugador1.casilla=LlenaCasilla(tablero,jugador1)
+					jugador2.casilla=LlenaCasilla(tablero,jugador2)
+				else:
+					pass
+				Total(jugador1,jugador2)		
+				Resultado(jugador1,jugador2)
 		# Establecemos el fondo de pantalla.
 		ventana.fill(VERDE)	
 		# Dibujamos la retícula
