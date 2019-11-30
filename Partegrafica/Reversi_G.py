@@ -34,7 +34,7 @@ from Funcion13_EsValida			import JugadaValida
 #COLORES
 BLANCO = (255, 255, 255)
 VERDE = ( 80, 180, 80)
-ROJO = (255, 0, 0)
+AZUL = (80, 80, 180)
 FONDO = (80,180,80)
 NEGRO = (0, 0, 0)
 
@@ -44,7 +44,7 @@ ALTO = 50
 MARGEN = 10
 
 #CONFIGURACION
-DIMENCIONES = [500,500]
+DIMENCIONES = [490,490]
 # Establecemos el título de la pantalla.
 pygame.display.set_caption("OTHELLO")
 
@@ -80,14 +80,12 @@ def Partida():
 	cerrar=False
 	clock = pygame.time.Clock()
 	fuente = pygame.font.Font(None,30)
-	pygame.display.set_caption('Eventos del mouse')
-	pygame.display.set_mode((500, 500))
 	while True:
 		event = pygame.event.wait()
 		if event.type == pygame.QUIT:
 			break
-		if event.type == pygame.MOUSEBUTTONDOWN:
-			if ficha > 0 and SePuedeJugar(jugador1,jugador2):
+		if ficha > 0 and SePuedeJugar(jugador1,jugador2):
+			if event.type == pygame.MOUSEBUTTONDOWN:
 				jugador=Turno(turno,jugador1,jugador2)
 				pos= (event.pos)
 				y=pos[0] // (LARGO + MARGEN)
@@ -106,7 +104,7 @@ def Partida():
 				Total(jugador1,jugador2)		
 				Resultado(jugador1,jugador2)
 		# Establecemos el fondo de pantalla.
-		ventana.fill(VERDE)	
+		ventana.fill(AZUL)	
 		# Dibujamos la retícula
 		for x in range(0,8):
 			for y in range(0,8):
