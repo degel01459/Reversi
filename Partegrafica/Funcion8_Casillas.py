@@ -10,7 +10,7 @@ def LlenaCasilla(tablero,player):
 				contador=contador+1
 			elif tablero[i][j]!=player:
 				pass	
-	assert(all(all(contador==sum(1 for k in range(0,64)) for j in range(0,8)) for i in range(0,8) if tablero[i][j]==player.j))		
+	#assert(all(all(contador==sum(1 for k in range(0,64)) for j in range(0,8)) for i in range(0,8) if tablero[i][j]==player.j))		
 		
 
 	return contador

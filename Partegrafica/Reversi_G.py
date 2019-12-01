@@ -93,7 +93,7 @@ def Partida():
 				print(tablero[x][y])
 				print("Click ", pos, "Coordenadas de la retícula: ", x, y)
 				if JugadaValida(tablero,x,y,jugador):
-					RealizarJugada(tablero,x,y,jugador,jugador1,jugador2)
+					RealizarJugada(tablero,x,y,jugador)
 					ficha=ficha-1
 					turno=turno+1
 					CambiarJugador(turno,jugador1,jugador2)

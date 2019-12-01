@@ -1,130 +1,146 @@
-def jugadaizq(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadaizq(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		j=1
-		while j<=cord2:
-			if 0<=cord1<8 and 0<cord2<8 and array[cord1][j-1]==player.j and array[cord1][j]!=0:
-				array[cord1][j]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while c>0:
+			if 0<=c<8 and board[f][c-1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				c=c+2
+			elif board[f][c-1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			j=j+1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				c=1	
+			c=c-1
+	return board
 
-def jugadadiagizqsup(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadadiagizqsup(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		i=1
-		j=1
-		while i<=cord1 and j<=cord2:
-			if 0<cord1<8 and 0<cord2<8 and array[i-1][j-1]==player.j and array[i][j]!=0:
-				array[i][j]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f>0 and c>0:
+			if board[f-1][c-1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f+2
+				c=c+2
+			elif board[f-1][c-1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			i=i+1
-			j=j+1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				f=0
+			f=f-1
+			c=c-1
+	return board
 
 
-def jugadasup(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadasup(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		j=1
-		while j<=cord1:
-			if 0<cord1<8 and 0<cord2<8 and array[j-1][cord2]==player.j and array[j][cord2]!=0:
-				array[j][cord2]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f>0:
+			if board[f-1][c]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f+2	
+			elif board[f-1][c]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			j=j+1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				f=0
+			f=f-1
+	return board
 
 
-def jugadadiagdersup(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadadiagdersup(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		i=1
-		j=6
-		while i<=cord1 and j>=cord2:
-			if 0<cord1<8 and 0<=cord2<7 and array[i-1][j+1]==player.j and array[i][j]!=0:
-				array[i][j]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f>0 and c<7:
+			if board[f-1][c+1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f+2
+				c=c-2
+			elif board[f-1][c+1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			i=i+1
-			j=j-1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				f=1
+			f=f-1
+			c=c+1
+	return board
 
 
-def jugadader(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadader(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		j=6
-		while j>=cord2:
-			if 0<=cord1<8 and 0<cord2<8 and array[cord1][j+1]==player.j and array[cord1][j]!=0:
-				array[cord1][j]=player.j
-			else:
+	elif board[f][c]!=jug.j and 0<=f<8 and 0<=c<8 and board[f][c]!=0:
+		
+		while c<7:
+			if board[f][c+1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				c=c-2
+			elif board[f][c+1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			j=j-1
-	return array
+			elif board[f][c]==jug.j or board[f][c]==jug.j:
+				c=7
+			c=c+1
+	return board
 
-def jugadadiagderinf(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadadiagderinf(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		i=6
-		j=6
-		while i>=cord1 and j>=cord2:
-			if 0<=cord1<7 and 0<cord2<7 and array[i+1][j+1]==player.j and array[i][j]!=0:
-				array[i][j]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f<7 and c<7:
+			if board[f+1][c+1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f-2
+				c=c-2
+			elif board[f+1][c+1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			i=i-1
-			j=j-1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				pass	
+			f=f+1
+			c=c+1
+	return board
 
-def jugadainf(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadainf(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		i=6
-		while i>=cord2:
-			if 0<=cord1<8 and 0<cord2<8 and array[i+1][cord2]==player.j and array[i][cord2]!=0:
-				array[i][cord2]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f<7:
+			if board[f+1][c]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f-2
+			elif board[f+1][c]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			i=i-1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				f=7
+			f=f+1
+	return board
 
-def jugadadiagizqinf(array,cord1,cord2,player,player1,player2):
-	if cord1<0 or cord1>=8 or cord2<0 or cord2>=8 or array[cord1][cord2]==player.j:
+def jugadadiagizqinf(board,f,c,jug):
+	if f<0 or f>=8 or c<0 or c>=8 or board[f][c]==jug.j or board[f][c]==0:
 		pass
-	elif array[cord1][cord2]!=player.j and 0<=cord1<8 and 0<=cord2<8 and array[cord1][cord2]!=0:
-		i=6
-		j=1
-		while i>=cord1 and j<=cord2:
-			if 0<cord1<8 and 0<cord2<8 and array[i+1][j-1]==player.j and array[i][j]!=0:
-				array[i][j]=player.j
-			else:
+	elif 0<=f<8 and 0<=c<8 and board[f][c]!=jug.j and board[f][c]!=0:
+		while f<7 and c>0:
+			if board[f+1][c-1]==jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
+				board[f][c]=jug.j
+				f=f-2
+				c=c+2
+			elif board[f+1][c-1]!=jug.j and board[f][c]!=0 and board[f][c]!=jug.j:
 				pass
-			i=i-1
-			j=j+1
-	return array
+			elif board[f][c]==0 or board[f][c]==jug.j:
+				f=7	
+			f=f+1
+			c=c-1
+	return board
 
-def RealizarJugada(tablero,cord1,cord2,player,player1,player2):
+def RealizarJugada(tablero,cord1,cord2,player):
 	tablero[cord1][cord2]=player.j
-	i=cord1
-	j=cord2
-	jugadaizq(tablero,cord1,cord2-1,player,player1,player2)
-	jugadadiagizqsup(tablero,cord1-1,cord2-1,player,player1,player2)
-	jugadasup(tablero,cord1-1,cord2,player,player1,player2)
-	jugadadiagdersup(tablero,cord1-1,cord2+1,player,player1,player2)
-	jugadader(tablero,cord1,cord2+1,player,player1,player2)
-	jugadadiagderinf(tablero,cord1+1,cord2+1,player,player1,player2)
-	jugadainf(tablero,cord1+1,cord2,player,player1,player2)
-	jugadadiagizqinf(tablero,cord1+1,cord2-1,player,player1,player2)
+	
+	jugadaizq(tablero,cord1,cord2-1,player)
+	jugadadiagizqsup(tablero,cord1-1,cord2-1,player)
+	jugadasup(tablero,cord1-1,cord2,player)
+	jugadadiagdersup(tablero,cord1-1,cord2+1,player)
+	jugadader(tablero,cord1,cord2+1,player)
+	jugadadiagderinf(tablero,cord1+1,cord2+1,player)
+	jugadainf(tablero,cord1+1,cord2,player)
+	jugadadiagizqinf(tablero,cord1+1,cord2-1,player)
 	return tablero
 
 
