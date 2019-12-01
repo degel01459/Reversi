@@ -1,17 +1,14 @@
 def Nombres(player1,player2,match):					#Procedimiento que asigna los nombres de los jugadores
-	print("")
-	print("	REVERSI ")
-	print("")
-	print("Es la Partida: ",match)	
 	while True:						#Indica el número de partidas que se llevan jugando
 		try:
-			print(" Jugardor1 Fichas negras=1 y Jugador2 Fichas blancas=2")
-			player1.nombre = "ALE"#input("Por favor ingrese nombre del jugador 1: ")
-			player2.nombre = "KEV"#input("Por favor ingrese nombre del jugador 2: ")
-			assert(len(player1.nombre)>0 and len(player2.nombre)>0)
+			name=[input("nombre"+str(i)+": ") for i in range(1,3)]
+			#assert(len(player1.nombre)>0 and len(player2.nombre)>0)
 			break
 		except:
-			print("no puede queda en blanco")
-			print("Debe intoducir al menos un caracter")
-			print("")
-	
+			pass
+	if player1.nombre==name[1]:
+		player2.nombre = name[2]#input("Por favor ingrese nombre del jugador 2: ")
+	else:
+		player2.nombre=name[1]	
+	print(player1.nombre,player2.nombre)	
+	#assert(len(player1.nombre)>0 and len(player2.nombre)>0)

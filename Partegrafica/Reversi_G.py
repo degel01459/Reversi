@@ -17,11 +17,9 @@ import random
 import sys
 import pygame
 import os
-pygame.init()
 
 #FUNCIONES
 from Funcion3_Nombres			import Nombres
-from Funcion4_QuedanFichas 		import QuedanFichas
 from Funcion5_Turno		 		import Turno
 from Funcion7_SePuedeJugar		import SePuedeJugar 
 from Funcion8_Casillas			import LlenaCasilla
@@ -30,6 +28,7 @@ from Funcion10_CambiarJugador 	import CambiarJugador
 from Funcion11_Total			import Total
 from Funcion12_Juega			import RealizarJugada
 from Funcion13_EsValida			import JugadaValida
+from Funcion13_EsValida			import ListaJugadasValidas
 
 #INICIALIZADORES
 
@@ -45,14 +44,6 @@ LARGO  = 50
 ALTO = 50
 MARGEN = 10
 
-#CONFIGURACION
-DIMENCIONES = [490,600]
-ventana = pygame.display.set_mode(DIMENCIONES)
-clock = pygame.time.Clock()
-
-# Establecemos el título de la pantalla.
-pygame.display.set_caption("OTHELLO")
-
 #CLASE
 class Jugador():
 	nombre=""
@@ -65,6 +56,14 @@ Nombres(jugador1,jugador2,partida)
 jugador1.j=1
 jugador2.j=2
 
+#CONFIGURACION
+DIMENCIONES = [490,600]
+ventana = pygame.display.set_mode(DIMENCIONES)
+clock = pygame.time.Clock()
+
+pygame.init()
+# Establecemos el título de la pantalla.
+pygame.display.set_caption("OTHELLO")
 
 def Partida():
 	jugador1.casilla=2
@@ -84,26 +83,31 @@ def Partida():
 	while True:
 		event = pygame.event.wait()
 		if event.type == pygame.QUIT:
-			break
-		if ficha > 0 and SePuedeJugar(jugador1,jugador2):
+			pygame.quit()
+			sys.exit()
+		elif ficha > 0 and SePuedeJugar(jugador1,jugador2):
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				jugador=Turno(turno,jugador1,jugador2)
-				pos= (event.pos)
-				y=pos[0] // (LARGO + MARGEN)
-				x=pos[1] // (ALTO + MARGEN)
-				print(tablero[x][y])
-				print("Click ", pos, "Coordenadas de la retícula: ", x, y)
-				if JugadaValida(tablero,x,y,jugador):
-					RealizarJugada(tablero,x,y,jugador)
-					for i in range(0,8):
-						print(tablero[i])
-					ficha=ficha-1
-					turno=turno+1
-					CambiarJugador(turno,jugador1,jugador2)
-					jugador1.casilla=LlenaCasilla(tablero,jugador1)
-					jugador2.casilla=LlenaCasilla(tablero,jugador2)
+				print("ES tuno de",jugador.j)
+				if ListaJugadasValidas(tablero,jugador)==True:
+					pos= (event.pos)
+					y=pos[0] // (LARGO + MARGEN)
+					x=pos[1] // (ALTO + MARGEN)
+					print("Click ", pos, "Coordenadas de la retícula: ", x, y)
+					if JugadaValida(tablero,x,y,jugador):
+						RealizarJugada(tablero,x,y,jugador)
+						for i in range(0,8):
+							print(tablero[i])
+						ficha=ficha-1
+						turno=turno+1
+						CambiarJugador(turno,jugador1,jugador2)
+						jugador1.casilla=LlenaCasilla(tablero,jugador1)
+						jugador2.casilla=LlenaCasilla(tablero,jugador2)
+					else:
+						pass
 				else:
-					pass		
+					turno=turno+1
+					CambiarJugador(turno,jugador1,jugador2)				
 				Resultado(jugador1,jugador2)
 				Total(jugador1,jugador2,ficha)
 		# Establecemos el fondo de pantalla.
@@ -115,7 +119,7 @@ def Partida():
 				colorf=FONDO
 				if tablero[x][y] == 1:
 					colorf = NEGRO
-				if tablero[x][y] == 2:
+				if tablero[x][y] == 2:# Establecemos el título de la pantalla.
 					colorf = BLANCO
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
@@ -124,12 +128,4 @@ def Partida():
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
 
-
 Partida()
-
-pygame.quit()
-
-
-
-
-

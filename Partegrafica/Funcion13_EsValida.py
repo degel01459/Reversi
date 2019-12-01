@@ -155,4 +155,20 @@ def JugadaValida(tablero,cord1,cord2,player):
 			pass
 		else:
 			valida=False
-	return valida				
+	return valida
+
+def ListaJugadasValidas(array:[int],player):
+	board_tem=array
+	player_tem=player
+	EsValida=False
+	i=0
+	while i<8 and not EsValida:
+		j=0
+		while j<8 and not EsValida:
+			if JugadaValida(board_tem,i,j,player_tem)==True:
+				EsValida=True
+			elif JugadaValida(board_tem,i,j,player_tem)==False:
+				pass
+			j=j+1
+		i=i+1		
+	return EsValida	
