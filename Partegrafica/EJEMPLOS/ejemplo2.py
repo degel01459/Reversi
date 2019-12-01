@@ -45,13 +45,13 @@ si = fuente.render("Espacio = COMENZAR", 0, (255,255,255))													#parametr
 no = fuente.render("Esc = EXIT", 0, (255,255,255))														#parametros(text, antialias, coordenada, color de fondo)
 exit = fuente.render("JUEGA CUANDO QUIERAS", 0, (255,255,255))														#parametros(text, antialias, coordenada, color de fondo)
 numerodepartida = fuente.render("Esta es la partida: ", True, (255,255,255))
-imagen = pygame.image.load("D:/DEGEL/OneDrive/UNI_KEVIN/ALGORITMOI/LabAlgoritmo/Proyecto/3R.jpg")	#Load de imagen(archivo fuente, tama;o letra)
+#imagen = pygame.image.load("D:/DEGEL/OneDrive/UNI_KEVIN/ALGORITMOI/LabAlgoritmo/Proyecto/3R.jpg")	#Load de imagen(archivo fuente, tama;o letra)
 
 #	INTERFAZ
 
 ventana.fill(color)
 ventana.blit( titulo, (375, 100) )																#creacion en ventana (coordenadas x,y)
-ventana.blit( imagen, (400, 150) )																#creacion en ventana (coordenadas x,y)
+#ventana.blit( imagen, (400, 150) )																#creacion en ventana (coordenadas x,y)
 ventana.blit( jugar, (430 , 450) )																#creacion en ventana (coordenadas x,y)
 ventana.blit( si, (290,500) )																	#creacion en ventana (coordenadas x,y)
 ventana.blit( no, (600,500) )
