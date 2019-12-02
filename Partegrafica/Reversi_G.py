@@ -65,6 +65,7 @@ pygame.init()
 # Establecemos el título de la pantalla.
 pygame.display.set_caption("OTHELLO")
 
+
 def Partida():
 	jugador1.casilla=2
 	jugador2.casilla=2
@@ -123,9 +124,29 @@ def Partida():
 					colorf = BLANCO
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
+
 		# Limitamos a 60 fotogramas por segundo.
 		clock.tick(60)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
 
 Partida()
+
+Nueva_partida=True
+while Nueva_partida:
+	while True:
+			try:
+				print("¿Jugar nuevamente?")
+				print("Indique (SI) o (NO) en mayúscula")
+				otra=input("ingrese: ")
+				assert(otra=="SI" or otra=="NO")
+				break
+			except:
+				print("El dato ingresado no es válido")
+				print("Debe ingresar (SI) o (NO) en mayúscula")
+				print("")
+	if otra=="NO":
+		Nueva_partida=False
+		print("Fin del juego")
+	elif otra=="SI":
+		Partida()			
