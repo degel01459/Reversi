@@ -33,7 +33,7 @@ from Funcion13_EsValida			import ListaJugadasValidas
 
 #COLORES
 BLANCO = (255, 255, 255)
-VERDE = ( 80, 180, 80)
+AZUL = (20,20,100)
 GRIS = (50, 50, 50)
 FONDO = (80,180,80)
 NEGRO = (0, 0, 0)
@@ -54,17 +54,16 @@ partida=1
 jugador1.j=1
 jugador2.j=2
 Nombres(jugador1,jugador2,partida)
-print("Comienza jugador 1: ",jugador1.nombre)
 
 def Partida():
 	pygame.init()
 	# Establecemos el título de la pantalla.
 	pygame.display.set_caption("OTHELLO")
-	#CONFIGURACION
-	DIMENCIONES = [490,600]
+	#CONFIGURACIONk
+	DIMENCIONES = [490,700]
 	ventana = pygame.display.set_mode(DIMENCIONES)
 	clock = pygame.time.Clock()
-	fuente =  pygame.font.Font(None,30)
+	fuente =  pygame.font.SysFont('arialblack',30)
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
@@ -86,7 +85,6 @@ def Partida():
 			elif ficha > 0 and SePuedeJugar(jugador1,jugador2):
 				if event.type == pygame.MOUSEBUTTONDOWN:
 					jugador=Turno(turno,jugador1,jugador2)
-					print("Es tuno de jugador: ",jugador.j," ",jugador.nombre)
 					if ListaJugadasValidas(tablero,jugador)==True:
 						pos= (event.pos)
 						y=pos[0] // (LARGO + MARGEN)
@@ -106,7 +104,7 @@ def Partida():
 						turno=turno+1
 					Resultado(jugador1,jugador2)
 					Total(jugador1,jugador2,ficha)
-			elif ficha == 0 or SePuedeJugar(jugador1,jugador2):
+			elif ficha == 0 or SePuedeJugar(jugador1,jugador2)==False:
 				print("¿Jugar nuevamente?")
 				print("Indique (SI) o (NO) en mayúscula")
 				otra=input("ingrese: ")
@@ -115,7 +113,8 @@ def Partida():
 				else:
 					sys.exit()
 		# Establecemos el fondo de pantalla.
-		ventana.fill(GRIS)	
+		ventana.fill(GRIS)
+		
 		# Dibujamos la retícula
 		for x in range(0,8):
 			for y in range(0,8):
@@ -123,12 +122,35 @@ def Partida():
 				colorf=FONDO
 				if tablero[x][y] == 1:
 					colorf = NEGRO
-				if tablero[x][y] == 2:# Establecemos el título de la pantalla.
+				if tablero[x][y] == 2:
 					colorf = BLANCO
-				inf0 = fuente.render("Es tuno de jugador: ", 0, (255,255,255))
-				ventana.blit( inf0, (500 , 200) )
+				fn=jugador1.casilla
+				fb=jugador2.casilla
+				fn1=jugador1.nombre
+				fb1=jugador2.nombre
+				ft=turno
+				jugador=Turno(turno,jugador1,jugador2)
+				fja=jugador.nombre
+				fw=Total(jugador1,jugador2,ficha)
+				fuente0 = pygame.font.SysFont('arialblack',40)
+				fuente1 = pygame.font.SysFont('arialblack',25)
+				text0 = fuente0.render(str(fn), True, NEGRO)
+				text1 = fuente0.render(str(fb), True, BLANCO)
+				text2 = fuente1.render(str(fn1), True, NEGRO)
+				text3 = fuente1.render(str(fb1), True, BLANCO)
+				text4 = fuente1.render("Turno: "+str(ft), True, AZUL)
+				text5 = fuente1.render("Juega: "+str(fja), True, AZUL)
+				text6 = fuente1.render("GANO JUGADOR: "+str(fw), True, AZUL)
+				ventana.blit(text0,(40,540))
+				ventana.blit(text1,(260,540))
+				ventana.blit(text2,(40,490))
+				ventana.blit(text3,(260,490))
+				ventana.blit(text4,(170,590))
+				ventana.blit(text5,(150,620))
+				ventana.blit(text6,(100,660))
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
+				
 		# Limitamos a 60 fotogramas por segundo.
 		clock.tick(60)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.

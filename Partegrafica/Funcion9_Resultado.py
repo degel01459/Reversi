@@ -4,4 +4,6 @@ def  Resultado(player1,player2):	#Procedimiento indica resultados actuales y lo 
 	print("Total de fichas Blancas de ",player2.nombre,": ",player2.casilla)
 	print("")
 	
+	
+	
 
