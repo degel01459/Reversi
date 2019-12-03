@@ -159,7 +159,7 @@ def Partida():
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
 				
 		# Limitamos a 60 fotogramas por segundo.
-		clock.tick(60)
+		clock.tick(144)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
 	pygame.quit()
