@@ -49,7 +49,7 @@ jugador1=Jugador()
 jugador2=Jugador()
 jugador1.j=1
 jugador2.j=2
-Nombres(jugador1,jugador2)
+
 
 def Partida():
 	pygame.init()
@@ -60,6 +60,7 @@ def Partida():
 	DIMENCIONES = [490,700]
 	ventana = pygame.display.set_mode(DIMENCIONES)
 	clock = pygame.time.Clock()
+	Nombres(jugador1,jugador2)
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
