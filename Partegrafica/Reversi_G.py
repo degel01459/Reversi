@@ -19,15 +19,17 @@ import pygame
 import os
 
 #FUNCIONES
-from Funcion3_Nombres			import Nombres
-from Funcion5_Turno		 		import Turno
-from Funcion7_SePuedeJugar		import SePuedeJugar 
-from Funcion8_Casillas			import LlenaCasilla
-from Funcion9_Resultado			import Resultado
-from Funcion11_Total			import Total
-from Funcion12_Juega			import RealizarJugada
-from Funcion13_EsValida			import JugadaValida
-from Funcion13_EsValida			import ListaJugadasValidas
+from Funcion0_Nombres			import Nombres
+from Funcion1_SePuedeJugar		import SePuedeJugar 
+from Funcion2_Turno		 		import Turno
+from Funcion3_EsValida			import JugadaValida
+from Funcion3_EsValida			import ListaJugadasValidas
+from Funcion4_Juega				import RealizarJugada
+from Funcion5_Casillas			import LlenaCasilla
+from Funcion6_Resultado			import Resultado
+from Funcion7_Total				import Total
+
+
 
 #INICIALIZADORES
 
@@ -50,10 +52,9 @@ class Jugador():
 	casilla=0
 jugador1=Jugador()
 jugador2=Jugador()
-partida=1
 jugador1.j=1
 jugador2.j=2
-Nombres(jugador1,jugador2,partida)
+Nombres(jugador1,jugador2)
 
 def Partida():
 	pygame.init()
@@ -107,7 +108,13 @@ def Partida():
 			elif ficha == 0 or SePuedeJugar(jugador1,jugador2)==False:
 				print("¿Jugar nuevamente?")
 				print("Indique (SI) o (NO) en mayúscula")
-				otra=input("ingrese: ")
+				while True:
+					try:
+						otra=input("ingrese: ")
+						assert(otra=="SI" or otra=="NO")
+						break
+					except:
+						print("Debe ingresar SI no NO en mayúscula")	
 				if otra=="SI":
 					Partida()
 				else:
