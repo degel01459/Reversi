@@ -24,7 +24,6 @@ from Funcion5_Turno		 		import Turno
 from Funcion7_SePuedeJugar		import SePuedeJugar 
 from Funcion8_Casillas			import LlenaCasilla
 from Funcion9_Resultado			import Resultado
-from Funcion10_CambiarJugador 	import CambiarJugador
 from Funcion11_Total			import Total
 from Funcion12_Juega			import RealizarJugada
 from Funcion13_EsValida			import JugadaValida
@@ -52,21 +51,20 @@ class Jugador():
 jugador1=Jugador()
 jugador2=Jugador()
 partida=1
-Nombres(jugador1,jugador2,partida)
 jugador1.j=1
 jugador2.j=2
-
-#CONFIGURACION
-DIMENCIONES = [490,600]
-ventana = pygame.display.set_mode(DIMENCIONES)
-clock = pygame.time.Clock()
-
-pygame.init()
-# Establecemos el título de la pantalla.
-pygame.display.set_caption("OTHELLO")
-
+Nombres(jugador1,jugador2,partida)
+print("Comienza jugador 1: ",jugador1.nombre)
 
 def Partida():
+	pygame.init()
+	# Establecemos el título de la pantalla.
+	pygame.display.set_caption("OTHELLO")
+	#CONFIGURACION
+	DIMENCIONES = [490,600]
+	ventana = pygame.display.set_mode(DIMENCIONES)
+	clock = pygame.time.Clock()
+	fuente =  pygame.font.Font(None,30)
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
@@ -82,35 +80,40 @@ def Partida():
 		print(tablero[i])
 	ficha=60
 	while True:
-		event = pygame.event.wait()
-		if event.type == pygame.QUIT:
-			pygame.quit()
-			sys.exit()
-		elif ficha > 0 and SePuedeJugar(jugador1,jugador2):
-			if event.type == pygame.MOUSEBUTTONDOWN:
-				jugador=Turno(turno,jugador1,jugador2)
-				print("ES tuno de",jugador.j)
-				if ListaJugadasValidas(tablero,jugador)==True:
-					pos= (event.pos)
-					y=pos[0] // (LARGO + MARGEN)
-					x=pos[1] // (ALTO + MARGEN)
-					print("Click ", pos, "Coordenadas de la retícula: ", x, y)
-					if JugadaValida(tablero,x,y,jugador):
-						RealizarJugada(tablero,x,y,jugador)
-						for i in range(0,8):
-							print(tablero[i])
-						ficha=ficha-1
-						turno=turno+1
-						CambiarJugador(turno,jugador1,jugador2)
-						jugador1.casilla=LlenaCasilla(tablero,jugador1)
-						jugador2.casilla=LlenaCasilla(tablero,jugador2)
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				sys.exit()
+			elif ficha > 0 and SePuedeJugar(jugador1,jugador2):
+				if event.type == pygame.MOUSEBUTTONDOWN:
+					jugador=Turno(turno,jugador1,jugador2)
+					print("Es tuno de jugador: ",jugador.j," ",jugador.nombre)
+					if ListaJugadasValidas(tablero,jugador)==True:
+						pos= (event.pos)
+						y=pos[0] // (LARGO + MARGEN)
+						x=pos[1] // (ALTO + MARGEN)
+						print("Click ", pos, "Coordenadas de la retícula: ", x, y)
+						if JugadaValida(tablero,x,y,jugador):
+							RealizarJugada(tablero,x,y,jugador)
+							for i in range(0,8):
+								print(tablero[i])
+							ficha=ficha-1
+							turno=turno+1
+							jugador1.casilla=LlenaCasilla(tablero,jugador1)
+							jugador2.casilla=LlenaCasilla(tablero,jugador2)
+						else:
+							pass
 					else:
-						pass
+						turno=turno+1
+					Resultado(jugador1,jugador2)
+					Total(jugador1,jugador2,ficha)
+			elif ficha == 0 or SePuedeJugar(jugador1,jugador2):
+				print("¿Jugar nuevamente?")
+				print("Indique (SI) o (NO) en mayúscula")
+				otra=input("ingrese: ")
+				if otra=="SI":
+					Partida()
 				else:
-					turno=turno+1
-					CambiarJugador(turno,jugador1,jugador2)				
-				Resultado(jugador1,jugador2)
-				Total(jugador1,jugador2,ficha)
+					sys.exit()
 		# Establecemos el fondo de pantalla.
 		ventana.fill(GRIS)	
 		# Dibujamos la retícula
@@ -122,31 +125,13 @@ def Partida():
 					colorf = NEGRO
 				if tablero[x][y] == 2:# Establecemos el título de la pantalla.
 					colorf = BLANCO
+				inf0 = fuente.render("Es tuno de jugador: ", 0, (255,255,255))
+				ventana.blit( inf0, (500 , 200) )
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
-
 		# Limitamos a 60 fotogramas por segundo.
 		clock.tick(60)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
-
+	pygame.quit()
 Partida()
-
-Nueva_partida=True
-while Nueva_partida:
-	while True:
-			try:
-				print("¿Jugar nuevamente?")
-				print("Indique (SI) o (NO) en mayúscula")
-				otra=input("ingrese: ")
-				assert(otra=="SI" or otra=="NO")
-				break
-			except:
-				print("El dato ingresado no es válido")
-				print("Debe ingresar (SI) o (NO) en mayúscula")
-				print("")
-	if otra=="NO":
-		Nueva_partida=False
-		print("Fin del juego")
-	elif otra=="SI":
-		Partida()			
