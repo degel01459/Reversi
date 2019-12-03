@@ -60,7 +60,6 @@ def Partida():
 	DIMENCIONES = [490,700]
 	ventana = pygame.display.set_mode(DIMENCIONES)
 	clock = pygame.time.Clock()
-	fuente =  pygame.font.SysFont('arialblack',30)
 	jugador1.casilla=2
 	jugador2.casilla=2
 	x=0
@@ -126,35 +125,35 @@ def Partida():
 					colorf = NEGRO
 				if tablero[x][y] == 2:
 					colorf = BLANCO
-				fn=jugador1.casilla
-				fb=jugador2.casilla
-				fn1=jugador1.nombre
-				fb1=jugador2.nombre
-				ft=turno
-				jugador=Turno(turno,jugador1,jugador2)
-				fja=jugador.nombre
-				fw=Total(jugador1,jugador2,ficha)
-				fuente0 = pygame.font.SysFont('arialblack',40)
-				fuente1 = pygame.font.SysFont('arialblack',25)
-				text0 = fuente0.render(str(fn), True, NEGRO)
-				text1 = fuente0.render(str(fb), True, BLANCO)
-				text2 = fuente1.render(str(fn1), True, NEGRO)
-				text3 = fuente1.render(str(fb1), True, BLANCO)
-				text4 = fuente1.render("Turno: "+str(ft), True, AZUL)
-				text5 = fuente1.render("Juega: "+str(fja), True, AZUL)
-				text6 = fuente1.render("GANO JUGADOR: "+str(fw), True, AZUL)
-				ventana.blit(text0,(40,540))
-				ventana.blit(text1,(260,540))
-				ventana.blit(text2,(40,490))
-				ventana.blit(text3,(260,490))
-				ventana.blit(text4,(170,590))
-				ventana.blit(text5,(150,620))
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
-				ventana.blit(text6,(100,660))
+		fn=jugador1.casilla
+		fb=jugador2.casilla
+		fn1=jugador1.nombre
+		fb1=jugador2.nombre
+		ft=turno
+		jugador=Turno(turno,jugador1,jugador2)
+		fja=jugador.nombre
+		fw=Total(jugador1,jugador2,ficha)
+		fuente0 = pygame.font.SysFont('arialblack',40)
+		fuente1 = pygame.font.SysFont('arialblack',25)
+		text0 = fuente0.render(str(fn), True, NEGRO)
+		text1 = fuente0.render(str(fb), True, BLANCO)
+		text2 = fuente1.render(str(fn1), True, NEGRO)
+		text3 = fuente1.render(str(fb1), True, BLANCO)
+		text4 = fuente1.render("FICHAS: "+str(ficha), True, AZUL)
+		text5 = fuente1.render("Juega: "+str(fja), True, AZUL)
+		text6 = fuente1.render("GANO JUGADOR: "+str(fw), True, AZUL)
+		ventana.blit(text0,(40,540))
+		ventana.blit(text1,(260,540))
+		ventana.blit(text2,(40,490))
+		ventana.blit(text3,(260,490))
+		ventana.blit(text4,(170,590))
+		ventana.blit(text5,(150,620))
+		ventana.blit(text6,(100,660))
 		# Limitamos a 60 fotogramas por segundo.
-		clock.tick(144)
+		clock.tick(60)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
 		pygame.display.flip()
-	pygame.quit()
+	sys.exit()
 Partida()
