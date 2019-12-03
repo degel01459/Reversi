@@ -54,6 +54,7 @@ Nombres(jugador1,jugador2)
 def Partida():
 	pygame.init()
 	# Establecemos el título de la pantalla.
+	os.environ['SDL_VIDEO_CENTERED'] = '1'
 	pygame.display.set_caption("OTHELLO")
 	#INICIALIZADORES
 	DIMENCIONES = [490,700]
