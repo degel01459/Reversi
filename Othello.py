@@ -1,13 +1,12 @@
-
 # Descripción: Reversi es un cásico juego de mesa.
 # Autores: Angel Rodriguez, Kevin Briceño
 # Fecha de modificación: 29/11/2019
 # Variables:
 # jugador1
 # jugador2
-# i: int // cordenada para la fila
-# j: int // cordenada para la columna
-# reversi: list // Es el tablero de juego
+# x: int // cordenada para la fila
+# y: int // cordenada para la columna
+# tablero: list // Es el tablero de juego
 # 0 // Casillas vacias
 # 1 // Ficha Negra
 # 2 // Ficha Blanca
@@ -28,10 +27,6 @@ from Funcion4_Juega				import RealizarJugada
 from Funcion5_Casillas			import LlenaCasilla
 from Funcion6_Resultado			import Resultado
 from Funcion7_Total				import Total
-
-
-
-#INICIALIZADORES
 
 #COLORES
 BLANCO = (255, 255, 255)
@@ -60,7 +55,7 @@ def Partida():
 	pygame.init()
 	# Establecemos el título de la pantalla.
 	pygame.display.set_caption("OTHELLO")
-	#CONFIGURACIONk
+	#INICIALIZADORES
 	DIMENCIONES = [490,700]
 	ventana = pygame.display.set_mode(DIMENCIONES)
 	clock = pygame.time.Clock()
@@ -70,6 +65,7 @@ def Partida():
 	x=0
 	y=0
 	turno=1
+	ficha=60
 	#TABLERO
 	tablero=[[ 0 for j in range(0,8)]for i in range(0,8)]
 	tablero[3][3]=1
@@ -77,8 +73,7 @@ def Partida():
 	tablero[4][3]=2
 	tablero[4][4]=1
 	for i in range(0,8):
-		print(tablero[i])
-	ficha=60
+		print(tablero[i])	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -121,7 +116,6 @@ def Partida():
 					sys.exit()
 		# Establecemos el fondo de pantalla.
 		ventana.fill(GRIS)
-		
 		# Dibujamos la retícula
 		for x in range(0,8):
 			for y in range(0,8):
@@ -154,10 +148,9 @@ def Partida():
 				ventana.blit(text3,(260,490))
 				ventana.blit(text4,(170,590))
 				ventana.blit(text5,(150,620))
-				ventana.blit(text6,(100,660))
 				pygame.draw.rect(ventana,color,[(MARGEN+LARGO) * y + MARGEN, (MARGEN+ALTO) * x + MARGEN, LARGO, ALTO])
 				pygame.draw.circle(ventana,colorf,[(MARGEN+LARGO) * y + MARGEN+25, (MARGEN+ALTO) * x + MARGEN+25],LARGO//2)
-				
+				ventana.blit(text6,(100,660))
 		# Limitamos a 60 fotogramas por segundo.
 		clock.tick(144)
 		# Avanzamos y actualizamos la pantalla con lo que hemos dibujado.
