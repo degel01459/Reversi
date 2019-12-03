@@ -1,5 +1,5 @@
 import random
-def Nombres(player1,player2,match):					#Procedimiento que asigna los nombres de los jugadores
+def Nombres(player1,player2):					#Procedimiento que asigna los nombres de los jugadores
 	while True:						#Indica el número de partidas que se llevan jugando
 		try:
 			name=[input("nombre del jugador "+str(i+1)+": ") for i in range(0,2)]
